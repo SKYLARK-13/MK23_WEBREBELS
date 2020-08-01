@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:id="@+id/chatadminlayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        >
+    <com.google.android.material.card.MaterialCardView
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="20dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="16dp"
+        android:layout_margin="3dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:text="Email@email.com"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#1E88E5"
+            android:layout_alignParentEnd="true"
+            android:textSize="8sp"
+            android:id="@+id/chatadminmail"/>
+        <TextView
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="textEnd"
+
+            android:textSize="20sp"
+            android:text="Enter your message here"
+            android:textColor="#000000"
+            android:maxWidth="320dp"
+            android:id="@+id/msgadminchat"/>
+
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/admin"
+    tools:context=".loginadmin2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/textview4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Welcome To"
+                android:textSize="28sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/adm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:gravity="center_horizontal"
+                android:text="Admin login page"
+                android:textSize="28sp"
+                android:textStyle="italic"
+                android:layout_below="@+id/textview4" />
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/icon">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="60dp"
+                android:text="Enter your Secret Code"
+                android:textColor="#EB0909"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/secretcode"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword"
+                android:hint="Enter code here"
+                android:textSize="20sp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/textView5" />
+
+            <EditText
+                android:id="@+id/emailadmin"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:hint="Enter Email"
+                android:textSize="20sp"
+                android:inputType="textEmailAddress"
+                android:layout_below="@+id/secretcode"/>
+
+            <EditText
+                android:id="@+id/passwordadmin"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:hint="Enter Account Password"
+                android:inputType="textPassword"
+                android:textSize="20sp"
+                android:layout_below="@+id/emailadmin"/>
+
+            <Button
+                android:id="@+id/loginadmin12"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/button"
+                android:text="Login"
+                android:textColor="#fff"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

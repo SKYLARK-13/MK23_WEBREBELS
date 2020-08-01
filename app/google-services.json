@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "800202812487",
+    "firebase_url": "https://fass1-7615b.firebaseio.com",
+    "project_id": "fass1-7615b",
+    "storage_bucket": "fass1-7615b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800202812487:android:aedadc7ce9449540819562",
+        "android_client_info": {
+          "package_name": "com.example.navigation2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800202812487-tu6tbvad70fedj0cd9srdmfq64v7c67m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.navigation2",
+            "certificate_hash": "c25d990689a44cd34d58a42a6a3d7808fd759814"
+          }
+        },
+        {
+          "client_id": "800202812487-q0btbjofcagrlblbfptijqf08vlocnfk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ37QSXCdGmIKgcr_SQAZgRlJsnOaKZ_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800202812487-q0btbjofcagrlblbfptijqf08vlocnfk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

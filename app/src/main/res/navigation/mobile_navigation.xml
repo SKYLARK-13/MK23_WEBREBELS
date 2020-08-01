@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.navigation2.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_bank"
+        android:name="com.example.navigation2.ui.banking.BankingFragment"
+        android:label="@string/menu_bank"
+        tools:layout="@layout/fragment_banking" />
+    <fragment
+        android:id="@+id/nav_finance"
+        android:name="com.example.navigation2.ui.finance.FinanceFragment"
+        android:label="@string/menu_finance"
+        tools:layout="@layout/fragment_finance" />
+    <fragment
+        android:id="@+id/nav_pension"
+        android:name="com.example.navigation2.ui.pension.PensionFragment"
+        android:label="@string/menu_pension"
+        tools:layout="@layout/fragment_pension" />
+
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.example.navigation2.ui.account.AccountFragment"
+        android:label="Account"
+        tools:layout="@layout/account_fragment" />
+
+    <fragment
+        android:id="@+id/nav_email"
+        android:name="com.example.navigation2.ui.email.EmailFragment"
+        android:label="Email"
+        tools:layout="@layout/fragment_email" />
+
+    <fragment
+        android:id="@+id/nav_notification"
+        android:name="com.example.navigation2.ui.notification.NotificationFragment"
+        android:label="Notification"
+        tools:layout="@layout/notification_fragment" />
+
+    <fragment
+        android:id="@+id/nav_feedback"
+        android:name="com.example.navigation2.ui.feedback.FeedbackFragment"
+        android:label="Feedback"
+        tools:layout="@layout/feedback_fragment" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.navigation2.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.navigation2.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+
+    <fragment android:id="@+id/nav_logout"
+        android:name="com.example.navigation2.ui.logout.LogoutFragment"
+        android:label="@string/menu_logout"
+        tools:layout="@layout/fragment_logout"/>
+
+    <fragment android:id="@+id/nav_faq"
+        android:name="com.example.navigation2.ui.faq.FaqFragment"
+        android:label="@string/menu_faq"
+        tools:layout="@layout/fragment_faq" />
+
+</navigation>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:textColor="#F50505"
+        android:text="Are you Sure You Want to logout ?."/>
+    <TextView
+        android:id="@+id/logyes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="YES"
+        android:textColor="#F50505"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_below="@+id/text_logout"
+        android:textSize="28sp"
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="NO"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/logyes"
+        android:id="@+id/logno"
+        android:textColor="#00E229"/>
+
+</RelativeLayout>
