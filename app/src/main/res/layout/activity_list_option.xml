@@ -47,7 +47,19 @@
             android:id="@+id/report"
             android:layout_below="@+id/ReadNotice"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"/>
+            android:layout_marginTop="45dp"/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Download"
+        android:textSize="24sp"
+        android:textColor="#FFF"
+        android:background="@drawable/button"
+        android:id="@+id/download_btn"
+        android:layout_below="@+id/report"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"/>
 
     <Button
         android:layout_width="200dp"
@@ -57,9 +69,9 @@
         android:textColor="#FFF"
         android:background="@drawable/button"
         android:id="@+id/share_btn"
-        android:layout_below="@+id/report"
+        android:layout_below="@+id/download_btn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginTop="45dp"/>
 
 
 </RelativeLayout>

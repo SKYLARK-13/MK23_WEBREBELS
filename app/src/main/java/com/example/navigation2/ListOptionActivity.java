@@ -3,9 +3,12 @@ package com.example.navigation2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ListOptionActivity extends AppCompatActivity {
 Intent intent;
-private Button btn1,btn2,sharebtn;
+private Button btn1,btn2,sharebtn, downloadbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,7 @@ private Button btn1,btn2,sharebtn;
         btn1=findViewById(R.id.ReadNotice);
         sharebtn=findViewById(R.id.share_btn);
         btn2=findViewById(R.id.report);
+        downloadbtn = findViewById(R.id.download_btn);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +90,24 @@ private Button btn1,btn2,sharebtn;
                         "Hey there is a good initiative taken by DFS, Check it out by given Url : "+link);
                 startActivity(intent);
 
+            }
+        });
+
+        downloadbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(link));
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+                request.setTitle("Download");
+                request.setDescription("Downloading file");
+
+                request.allowScanningByMediaScanner();
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, ""+ System.currentTimeMillis()+".pdf");
+
+                //download service and enqueue
+                DownloadManager manager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+                manager.enqueue(request);
             }
         });
     }
