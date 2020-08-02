@@ -1,6 +1,8 @@
 package com.example.navigation2.ui.faq;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.navigation2.R;
 import com.example.navigation2.ui.settings.SettingsViewModel;
+
+import io.kommunicate.KmConversationBuilder;
+import io.kommunicate.Kommunicate;
+import io.kommunicate.callbacks.KmCallback;
 
 public class FaqFragment extends Fragment {
     private FaqViewModel faqViewModel;
@@ -30,6 +36,23 @@ public class FaqFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        Kommunicate.init(getActivity().getApplicationContext(), "2d4ba30d5c139e98ebd969846465134e3");
+        Context activityContext;
+
+        new KmConversationBuilder(getActivity().getApplicationContext())
+                .launchConversation(new KmCallback() {
+                    @Override
+                    public void onSuccess(Object message) {
+                        Log.d("Conversation", "Success: " + message);
+                    }
+
+                    @Override
+                    public void onFailure(Object error) {
+                        Log.d("Conversation", "Failure: " + error);
+                    }
+                });
+
         return root;
     }
 }
