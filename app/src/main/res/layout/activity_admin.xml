@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:elevation="4dp"
         android:orientation="vertical"
@@ -160,5 +160,25 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="bottom"
+        android:text="If you want to exit then"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="280dp"
+        android:text="LogOut"
+        android:textColor="#00BCD4"
+        android:textSize="20sp" />
 
 </RelativeLayout>
