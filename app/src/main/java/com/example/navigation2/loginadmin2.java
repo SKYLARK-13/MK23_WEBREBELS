@@ -82,5 +82,11 @@ public class loginadmin2 extends AppCompatActivity {
 
             }}
         });}
+
+    @Override
+    public void onBackPressed() {
+
+        this.finishAffinity();
     }
+}
 

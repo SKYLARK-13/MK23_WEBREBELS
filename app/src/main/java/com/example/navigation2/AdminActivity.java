@@ -29,6 +29,7 @@ private TextView logout;
                 FirebaseAuth.getInstance().signOut();
                 Intent intent=new Intent(AdminActivity.this,loginadmin2.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Toast.makeText(AdminActivity.this,"Logout",Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
