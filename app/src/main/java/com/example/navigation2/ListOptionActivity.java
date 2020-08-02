@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class ListOptionActivity extends AppCompatActivity {
 Intent intent;
-private Button btn1,btn2;
+private Button btn1,btn2,sharebtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,7 @@ private Button btn1,btn2;
        final String link=intent.getStringExtra("link");
         final String filename=tittle2+departmet+circularno3;
         btn1=findViewById(R.id.ReadNotice);
+        sharebtn=findViewById(R.id.share_btn);
         btn2=findViewById(R.id.report);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,17 @@ private Button btn1,btn2;
                 intent.putExtra("filename",filename);
                 intent.putExtra("type",1);
                 startActivity(intent);
+            }
+        });
+        sharebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT,
+                        "Hey there is a good initiative taken by DFS, Check it out by given Url : "+link);
+                startActivity(intent);
+
             }
         });
     }
