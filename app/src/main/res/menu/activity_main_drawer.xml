@@ -43,8 +43,10 @@
 <group>
     <item android:title="@string/menu_logout"
         android:id="@+id/nav_logout"></item>
-    <item android:title="@string/menu_faq"
-        android:id="@+id/nav_faq"></item>
+    <item
+        android:id="@+id/nav_faq"
+        android:icon="@drawable/bot_icon_faq"
+        android:title="@string/menu_faq"></item>
 </group>
 
 </menu>
