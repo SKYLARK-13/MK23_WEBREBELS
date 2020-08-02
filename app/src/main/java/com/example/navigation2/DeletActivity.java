@@ -36,7 +36,7 @@ import java.util.ArrayList;
 
 public class DeletActivity extends AppCompatActivity {
 private Intent myintent;
-private Button btn1,btn2,btn3;
+private Button btn1,btn2,btn3,btn4;
 private Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ private Spinner spinner;
           date=myintent.getStringExtra("date");
           tittle=myintent.getStringExtra("Tittle");
           department=myintent.getStringExtra("department");
+          btn4=findViewById(R.id.Viewedby);
         filename=tittle+department+circular;
         final ArrayList<String> emaillist=new ArrayList<>();
         final ArrayAdapter<String> myadapter = new ArrayAdapter<String>(DeletActivity.this, android.R.layout.simple_list_item_1, emaillist);
@@ -96,6 +97,8 @@ private Spinner spinner;
                                 if(task.isSuccessful()){
                                     System.out.println(filename);
                                     Toast.makeText(DeletActivity.this,"Deleted Succesfully",Toast.LENGTH_SHORT).show();
+                                    Intent intent=new Intent(DeletActivity.this,NoticeActivity.class);
+                                    startActivity(intent);
                                 }
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -148,6 +151,15 @@ private Spinner spinner;
 
                     }
                 });
+
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DeletActivity.this,ViewedbyActivity.class);
+                intent.putExtra("filename",filename);
+                startActivity(intent);
 
             }
         });

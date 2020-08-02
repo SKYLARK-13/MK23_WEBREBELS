@@ -62,9 +62,11 @@ public class FileActivity extends AppCompatActivity {
         circularno2 = (EditText) findViewById(R.id.circularno1);
         uploadfile = (Button) findViewById(R.id.uploadfile);
         tittle1 = (EditText) findViewById(R.id.tittle1);
+
         uploadfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressbar1.setVisibility(ProgressBar.VISIBLE);
                 String tittle2, date3, departmet, circularno3;
                 tittle2 = tittle1.getText().toString();
                 date3 = date1.getText().toString();
@@ -72,7 +74,8 @@ public class FileActivity extends AppCompatActivity {
                 circularno3 = circularno2.getText().toString();
                 if (tittle2 != null && date3 != null && departmet != null && circularno3 != null && Filepath != null) {
                     uplodfile1(Fileuri);
-                } else {
+                } else { progressbar1.setVisibility(ProgressBar.INVISIBLE);
+
                     Toast.makeText(FileActivity.this, "please complete all fields", Toast.LENGTH_LONG).show();
                 }
 
@@ -158,6 +161,7 @@ public class FileActivity extends AppCompatActivity {
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
 
                 if (!task.isSuccessful()) {
+                    progressbar1.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(FileActivity.this, "Please try again ", Toast.LENGTH_SHORT).show();
 
                     throw task.getException();
@@ -185,12 +189,20 @@ public class FileActivity extends AppCompatActivity {
                    String key2= databaseReference3.push().getKey();
                    ChatSend chatSend=new ChatSend("app","app","Hello To reports");
                    databaseReference3.child(key2).setValue(chatSend);
+
+                    DatabaseReference reference1=firebaseDatabase.getReference("SEENBY");
+                    String key4=reference1.child(filename1).push().getKey();
+                    SeenbyData seenbyData=new SeenbyData("not available","Admin");
+                    reference1.child(filename1).child(key4).setValue(seenbyData);
+                    progressbar1.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(FileActivity.this, "Uploded succesfully", Toast.LENGTH_SHORT).show();
 
 
                 }
+                progressbar1.setVisibility(ProgressBar.INVISIBLE);
             }
         });
+        progressbar1.setVisibility(ProgressBar.INVISIBLE);
     }
 }
 
