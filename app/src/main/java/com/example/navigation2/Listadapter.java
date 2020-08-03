@@ -79,7 +79,7 @@ public class Listadapter extends RecyclerView.Adapter<Listadapter.ViewHolder> im
         holder.date4.setText(listitem.getDate2());
         holder.circularno.setText(listitem.getCircular1());
         holder.department.setText(listitem.getDepartment1());
-        holder.link.setText(listitem.getLink1());
+        holder.link.setText("CLICK FOR MORE OPTIONS");
 
     }
 

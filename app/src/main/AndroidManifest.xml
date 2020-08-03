@@ -20,7 +20,7 @@
         <activity android:name=".ListOptionActivity"></activity>
         <activity
             android:name=".AdminReportActivity"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"></activity>
         <activity android:name=".DeletActivity" />
         <activity android:name=".EmailList" />
         <activity android:name=".EmailActivity" />

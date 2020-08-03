@@ -68,7 +68,7 @@ public class Listadminadapter extends RecyclerView.Adapter<Listadminadapter.View
         holder.date4.setText(listitem.getDate2());
         holder.circularno.setText(listitem.getCircular1());
         holder.department.setText(listitem.getDepartment1());
-        holder.link.setText(listitem.getLink1());
+        holder.link.setText("CLICK FOR MOR OPTIONS");
 
     }
 
