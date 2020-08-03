@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,11 +27,16 @@ public class ViewedbyActivity extends AppCompatActivity {
     private ValueEventListener valueEventListener;
     private ViewbyAdapter viewbyAdapter;
     private List<SeenbyData> listitems;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewedby);
+
+        toolbar=findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+
         intent=getIntent();
         String filename=intent.getStringExtra("filename");
         listitems=new ArrayList<>();
@@ -83,4 +89,8 @@ public class ViewedbyActivity extends AppCompatActivity {
         recyclerView.setAdapter(viewbyAdapter);
     }
 
+    private void setSupportActionBar(Toolbar toolbar) {
+
     }
+
+}
