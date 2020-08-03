@@ -23,7 +23,7 @@ There are two more options available to see the reports and the name of users wh
 
 
 
-<img src="screen/17.jpeg" height="400"> &nbsp;  <img src="screen/16.jpeg" height="400"> &nbsp;  <img src="screen/15.jpeg" height="400"> &nbsp;  <img src="screen/14.jpeg" height="400">
+<img src="screen/17.jpeg" height="400"> &nbsp;  <img src="screen/16.jpeg" height="400"> <br />  <img src="screen/15.jpeg" height="400"> &nbsp;  <img src="screen/14.jpeg" height="400">
 <br />
 
 
@@ -31,7 +31,7 @@ There are two more options available to see the reports and the name of users wh
 <br />
 
 
-<img src="screen/13.jpeg" height="400"> &nbsp;  <img src="screen/12.jpeg" height="400"> &nbsp;  <img src="screen/11.jpeg" height="400"> &nbsp;  <img src="screen/10.jpeg" height="400">
+<img src="screen/13.jpeg" height="400"> &nbsp;  <img src="screen/12.jpeg" height="400"> <br />  <img src="screen/11.jpeg" height="400"> &nbsp;  <img src="screen/10.jpeg" height="400">
 <br />
 
 
@@ -39,7 +39,7 @@ There are two more options available to see the reports and the name of users wh
 <br />
 
 
-<img src="screen/9.jpeg" height="400"> &nbsp;  <img src="screen/8.jpeg" height="400"> &nbsp;  <img src="screen/7.jpeg" height="400"> &nbsp;  <img src="screen/6.jpeg" height="400">
+<img src="screen/9.jpeg" height="400"> &nbsp;  <img src="screen/8.jpeg" height="400"> <br />  <img src="screen/7.jpeg" height="400"> &nbsp;  <img src="screen/6.jpeg" height="400">
 <br />
 
 
@@ -47,7 +47,7 @@ There are two more options available to see the reports and the name of users wh
 <br />
 
 
-<img src="screen/5.jpeg" height="400"> &nbsp;  <img src="screen/4.jpeg" height="400"> &nbsp;  <img src="screen/2.jpeg" height="400"> &nbsp;  <img src="screen/1.jpeg" height="400">
+<img src="screen/5.jpeg" height="400"> &nbsp;  <img src="screen/4.jpeg" height="400"> <br />  <img src="screen/2.jpeg" height="400"> &nbsp;  <img src="screen/1.jpeg" height="400">
 <br />
 
 
