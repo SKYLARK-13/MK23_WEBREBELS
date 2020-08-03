@@ -58,7 +58,9 @@
         android:layout_height="50dp"
         android:layout_below="@+id/deletaccount"
         android:text="Delete Account"
+        android:background="@drawable/button"
         android:id="@+id/delete"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>

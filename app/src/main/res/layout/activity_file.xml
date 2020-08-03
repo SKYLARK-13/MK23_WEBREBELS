@@ -18,13 +18,14 @@
 
     <Button
         android:id="@+id/choosefile"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="Select file"
         android:textSize="16sp"
         android:layout_below="@+id/textview6"
+        android:background="@drawable/button"
         android:layout_marginLeft="10dp"
-        android:textColor="#000000"
+        android:textColor="#fff"
         android:textStyle="bold"
 
         android:layout_marginTop="20dp"
@@ -41,17 +42,18 @@
         android:layout_marginTop="20dp"
         android:scrollbarAlwaysDrawHorizontalTrack="true"/>
 <Button
-    android:layout_width="wrap_content"
+    android:layout_width="130dp"
     android:layout_height="wrap_content"
     android:text="Select Date"
     android:textSize="16sp"
     android:layout_below="@+id/choosefile"
+    android:background="@drawable/button"
     android:layout_marginLeft="10dp"
     android:id="@+id/choosedate"
     android:layout_marginTop="20dp"
     android:layout_alignParentLeft="true"
     android:textStyle="bold"
-    android:textColor="#000000"/>
+    android:textColor="#fff"/>
     <TextView
         android:id="@+id/date1"
         android:layout_width="180dp"
@@ -127,17 +129,18 @@
         />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:text="Click to uplod"
         android:layout_below="@+id/tittle1"
+        android:background="@drawable/button"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:id="@+id/uploadfile"
-        android:textColor="#E90E0E"/>
+        android:textColor="#fff"/>
 
 
 </RelativeLayout>
