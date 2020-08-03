@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Console;
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
 
 
@@ -55,6 +56,7 @@ private Spinner spinner;
           department=myintent.getStringExtra("department");
           btn4=findViewById(R.id.Viewedby);
         filename=tittle+department+circular;
+
         final ArrayList<String> emaillist=new ArrayList<>();
         final ArrayAdapter<String> myadapter = new ArrayAdapter<String>(DeletActivity.this, android.R.layout.simple_list_item_1, emaillist);
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -82,6 +84,9 @@ private Spinner spinner;
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(DeletActivity.this,AdminReportActivity.class);
+
+
+
                 intent.putExtra("filename",filename);
                 intent.putExtra("type",2);
                 startActivity(intent);
@@ -91,6 +96,7 @@ private Spinner spinner;
             @Override
             public void onClick(View v) {
                 DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("File");
+
                         databaseReference.child(filename).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -126,7 +132,7 @@ private Spinner spinner;
                             k=k+","+childsnapshot.getValue();
 
                         }
-                        url1=url1+k+"&msg="+"<h1>New Update</h1><br><pr>Click below link to see</pr><br><pr>"+link+"</pr>";
+                        url1=url1+k+"&msg="+"<h1>New Update</h1><br><pr>Click below link to see</pr><br><a href="+link+">link</a>";
                         RequestQueue queue= Volley.newRequestQueue(DeletActivity.this);
                         StringRequest stringRequest=new StringRequest(Request.Method.GET, url1,
                                 new Response.Listener<String>() {

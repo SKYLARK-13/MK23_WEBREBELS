@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.InvalidKeyException;
+
 public class ListOptionActivity extends AppCompatActivity {
 Intent intent;
 private Button btn1,btn2,sharebtn, downloadbtn;
@@ -49,8 +51,8 @@ private Button btn1,btn2,sharebtn, downloadbtn;
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             User user = dataSnapshot.getValue(User.class);
-
                             SeenbyData seenbyData=new SeenbyData(user.getEmail(),user.getNameuser());
+
                             DatabaseReference reference1=FirebaseDatabase.getInstance().getReference("SEENBY");
                             String key4=reference1.child(filename).push().getKey();
 

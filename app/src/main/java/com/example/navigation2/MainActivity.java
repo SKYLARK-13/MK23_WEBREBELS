@@ -44,6 +44,9 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+
 public class MainActivity extends AppCompatActivity {
 private FirebaseAuth firebaseAuth;
     private AppBarConfiguration mAppBarConfiguration;
@@ -78,9 +81,28 @@ private FirebaseAuth firebaseAuth;
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                email.setText(user.getEmail());
-                name.setText(user.getNameuser());
+                DataEncryption dataEncryption=new DataEncryption();
+                String email1,name1;
+                email1=user.getEmail();
+                name1=user.getNameuser();
+                try {
+                    email1=dataEncryption.Dencrypt(email1);
+                    name1=dataEncryption.Dencrypt(name1);
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                email.setText(email1);
+                name.setText(name1);
                 if(user.getProfile()!=null){
+                    String profile=user.getProfile();
+                    try {
+                        profile=dataEncryption.Dencrypt(profile);
+                    }
+                    catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
                     imageView.setImageURI(Uri.parse(user.getProfile()));}
 
                 else{

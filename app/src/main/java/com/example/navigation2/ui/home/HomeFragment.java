@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.navigation2.DataEncryption;
 import com.example.navigation2.Listadapter;
 import com.example.navigation2.Listitem;
 import com.example.navigation2.R;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +91,23 @@ public class HomeFragment extends Fragment {
               listitems.clear();
               for(DataSnapshot listsnapshot:dataSnapshot.getChildren()){
                   Listitem listitem=listsnapshot.getValue(Listitem.class);
-                  listitems.add(listitem);
+                  String date=listitem.getDate2();
+                  String tittle=listitem.getTittle();
+                  String link=listitem.getLink1();
+                  String sector=listitem.getDepartment1();
+                  String circular=listitem.getCircular1();
+                  DataEncryption dataEncryption=new DataEncryption();
+                  try {
+                      date=dataEncryption.Dencrypt(date);
+                      tittle=dataEncryption.Dencrypt(tittle);
+                      link=dataEncryption.Dencrypt(link);
+                      sector=dataEncryption.Dencrypt(sector);
+                      circular=dataEncryption.Dencrypt(circular);
+                  } catch (UnsupportedEncodingException e) {
+                      e.printStackTrace();
+                  }
+                  Listitem listitem1=new Listitem(tittle,date,link,sector,circular);
+                  listitems.add(listitem1);
 
               }
               listadapter.notifyDataSetChanged();

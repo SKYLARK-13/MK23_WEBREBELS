@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,9 +54,20 @@ public class AdminReportActivity extends AppCompatActivity {
                 else{
                     name="Admin";
                 }
+                DataEncryption dataEncryption=new DataEncryption();
+                try {
+                    message=dataEncryption.Encrypt(message);
+                    mail=dataEncryption.Encrypt(mail);
+                    name=dataEncryption.Encrypt(name);
+                } catch (InvalidKeyException e) {
+                    e.printStackTrace();
+                }
+
 
                 ChatSend chatSend=new ChatSend(name,mail,message);
                 DatabaseReference databaseReference2=FirebaseDatabase.getInstance().getReference("Reports");
+
+
                 String key=databaseReference2.child(filename).push().getKey();
                 databaseReference2.child(filename).child(key).setValue(chatSend);
                 Toast.makeText(AdminReportActivity.this,"Sended Succesfully",Toast.LENGTH_SHORT).show();
@@ -68,6 +81,7 @@ public class AdminReportActivity extends AppCompatActivity {
         listadapter=new ChatAdapter(listitems,AdminReportActivity.this);
         recyclerView.setAdapter(listadapter);
         databaseReference= FirebaseDatabase.getInstance().getReference("Reports");
+
         databaseReference=databaseReference.child(filename);
 
 
@@ -78,7 +92,21 @@ public class AdminReportActivity extends AppCompatActivity {
                 listitems.clear();
                 for(DataSnapshot listsnapshot:dataSnapshot.getChildren()){
                     ChatSend listitem=listsnapshot.getValue(ChatSend.class);
-                    listitems.add(listitem);
+                    DataEncryption dataEncryption=new DataEncryption();
+                    String msg=listitem.getMsage();
+                    String mail=listitem.getMail();
+                    String name=listitem.getName();
+                    try {
+                        msg=dataEncryption.Dencrypt(msg);
+                        mail=dataEncryption.Dencrypt(mail);
+                        name=dataEncryption.Dencrypt(name);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    ChatSend chatSend=new ChatSend(name,mail,msg);
+                    listitems.add(chatSend);
 
 
                 }

@@ -61,7 +61,9 @@ public class Listadapter extends RecyclerView.Adapter<Listadapter.ViewHolder> im
                // intent.setType(Intent.ACTION_VIEW);
               //  intent.setDataAndType(Uri.parse(listitems.get(position).getLink1()),"pdf");
 
+
                    Intent i=new Intent(v.getContext(),ListOptionActivity.class);
+
                 i.putExtra("link",listitems.get(position).getLink1());
                 i.putExtra("date",listitems.get(position).getDate2());
                 i.putExtra("department",listitems.get(position).getDepartment1());

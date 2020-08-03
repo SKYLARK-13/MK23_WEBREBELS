@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,7 @@ public class ViewedbyActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(ViewedbyActivity.this));
         databaseReference= FirebaseDatabase.getInstance().getReference("SEENBY");
+
         databaseReference=databaseReference.child(filename);
 
         viewbyAdapter=new ViewbyAdapter(listitems,ViewedbyActivity.this);
@@ -47,7 +50,19 @@ public class ViewedbyActivity extends AppCompatActivity {
                 listitems.clear();
                 for(DataSnapshot listsnapshot:dataSnapshot.getChildren()){
                     SeenbyData listitem=listsnapshot.getValue(SeenbyData.class);
-                    listitems.add(listitem);
+                    String name,email;
+                    name=listitem.getName();
+                    email=listitem.getEmail();
+                    DataEncryption dataEncryption=new DataEncryption();
+                    try {
+                        name=dataEncryption.Dencrypt(name);
+                        email=dataEncryption.Dencrypt(email);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+
+                    SeenbyData seenbyData=new SeenbyData(email,name);
+                    listitems.add(seenbyData);
 
                 }
                 viewbyAdapter.notifyDataSetChanged();

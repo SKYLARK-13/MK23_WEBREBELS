@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter  {
@@ -40,6 +42,7 @@ public class ChatAdapter extends RecyclerView.Adapter  {
     @Override
     public int getItemViewType(int position) {
         ChatSend chatSend=listitems.get(position);
+
         if(chatSend.getName().equals("User")){
             return 1;
         }
@@ -52,6 +55,7 @@ public class ChatAdapter extends RecyclerView.Adapter  {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
         ChatSend listitem=listitems.get(position);
+
         switch (holder.getItemViewType()){
             case 1:
                 ( (UserViewHolder)holder).mail.setText(listitem.getMail());

@@ -20,6 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+
 public class Registration extends AppCompatActivity {
  private EditText username2,password2,reenter, name;
  private Button signup;
@@ -50,8 +53,11 @@ public class Registration extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                    final String name1,username3,password3,reenter1;
-                    name1=name.getText().toString().trim();
+                    String name1;
+                 String username3;
+                 String password3;
+                final String reenter1;
+                name1=name.getText().toString().trim();
                     username3=username2.getText().toString().trim();
                     password3=password2.getText().toString().trim();
                     reenter1=reenter.getText().toString().trim();
@@ -83,22 +89,40 @@ public class Registration extends AppCompatActivity {
                         reenter.setError("password not match");
                         reenter.requestFocus();
                         return;
-
                     }
-                    firebaseAuth.createUserWithEmailAndPassword(username3,password3).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                User user=new User(name1,username3);
-                                updatedatabase(user);
-                                sendverificationmail();
-                                updateui();
 
-                            }}
-                    });
 
-                }
+                Signup(username3,password3,name1);
+            }
 
+        });
+    }
+
+    private void Signup(final String username3, String password3, final String name1) {
+        firebaseAuth.createUserWithEmailAndPassword(username3,password3).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                String name=name1;
+                String email=username3;
+
+                if(task.isSuccessful()){
+                    DataEncryption dataEncryption=new DataEncryption();
+                    try {
+                        name=dataEncryption.Encrypt(name);
+                        email=dataEncryption.Encrypt(email);
+                    } catch (InvalidKeyException e) {
+                        e.printStackTrace();
+                    }
+
+                    User user=new User(name,email);
+                    updatedatabase(user);
+
+
+                        sendverificationmail();
+
+
+
+                }}
         });
     }
 
@@ -119,8 +143,9 @@ public class Registration extends AppCompatActivity {
             });
 
         }}
-    private void sendverificationmail() {
+    private void sendverificationmail()  {
         FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+
 
         firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -137,14 +162,14 @@ public class Registration extends AppCompatActivity {
         });
     }
     public void updateui(){
-        FirebaseUser currentUser = firebaseAuth.getInstance().getCurrentUser();
-        if(currentUser!=null){
+
+
             Intent i=new Intent(this,second.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             startActivity(i);
-        }
+
     }
 }
 

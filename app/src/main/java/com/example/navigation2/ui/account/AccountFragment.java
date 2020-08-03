@@ -47,13 +47,15 @@ FirebaseAuth firebaseAuth;
                if(user!=null){
                  String t=  user.getEmail();
                  if(t.equals(emailacc.getText().toString())){
-                     FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    FirebaseUser user1=FirebaseAuth.getInstance().getCurrentUser();
+                            user1.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                          @Override
                          public void onComplete(@NonNull Task<Void> task) {
                              if(task.isSuccessful()){
                                  Toast.makeText(root.getContext(),"Scusesfully deleted",Toast.LENGTH_SHORT).show();
                                  Intent i=new Intent(root.getContext(),com.example.navigation2.second.class);
                                  i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                  startActivity(i);
                              }
                          }

@@ -22,6 +22,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.security.InvalidKeyException;
+
 public class second extends AppCompatActivity {
 
     private EditText username1,password1;
@@ -61,7 +64,9 @@ public class second extends AppCompatActivity {
                     username1.requestFocus();
                 }
                 else{
-                firebaseAuth.sendPasswordResetEmail(username1.getText().toString().trim());
+                    String mail=username1.getText().toString().trim();
+
+                    firebaseAuth.sendPasswordResetEmail(mail);
                 Toast.makeText(second.this,"password reset link send",Toast.LENGTH_SHORT).show();
             }}
         });
@@ -112,6 +117,7 @@ public class second extends AppCompatActivity {
             pg1.setVisibility(ProgressBar.INVISIBLE);
             return;
         }
+
         pg1.setTag("Signing in");
 
         firebaseAuth.signInWithEmailAndPassword(usern, passn).addOnCompleteListener(second.this, new OnCompleteListener<AuthResult>() {

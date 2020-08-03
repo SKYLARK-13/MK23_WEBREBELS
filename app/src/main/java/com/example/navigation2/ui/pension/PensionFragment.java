@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.navigation2.DataEncryption;
 import com.example.navigation2.Listadapter;
 import com.example.navigation2.Listitem;
 import com.example.navigation2.R;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,8 +76,32 @@ public class PensionFragment extends Fragment {
                 for(DataSnapshot listsnapshot:dataSnapshot.getChildren()) {
                     Listitem listitem = listsnapshot.getValue(Listitem.class);
                     if (listitem.getDepartment1() != null) {
-                        if (listitem.getDepartment1().equals("Pension sector")) {
-                            listitems1.add(listitem);
+                        String d=listitem.getDepartment1();
+                        DataEncryption dataEncryption=new DataEncryption();
+                        try {
+                            d=dataEncryption.Dencrypt(d);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (d.equals("Pension sector")) {
+                            String date=listitem.getDate2();
+                            String tittle=listitem.getTittle();
+                            String link=listitem.getLink1();
+                            String sector=listitem.getDepartment1();
+                            String circular=listitem.getCircular1();
+                            DataEncryption dataEncryption1=new DataEncryption();
+                            try {
+                                date=dataEncryption1.Dencrypt(date);
+                                tittle=dataEncryption1.Dencrypt(tittle);
+                                link=dataEncryption1.Dencrypt(link);
+                                sector=dataEncryption1.Dencrypt(sector);
+                                circular=dataEncryption1.Dencrypt(circular);
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
+                            Listitem listitem1=new Listitem(tittle,date,link,sector,circular);
+                            listitems1.add(listitem1);
                         }
 
                     }

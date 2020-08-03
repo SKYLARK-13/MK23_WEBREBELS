@@ -31,6 +31,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -143,11 +144,21 @@ public class FileActivity extends AppCompatActivity {
     }
 
     public void uplodfile1(Uri uri) {
+        DataEncryption dataEncryption=new DataEncryption();
 
         String tittle2 = tittle1.getText().toString().trim();
        String departmet = myspinner.getSelectedItem().toString().trim();
         String circularno3 = circularno2.getText().toString().trim();
         final String filename=tittle2+departmet+circularno3;
+        try {
+            tittle2=dataEncryption.Encrypt(tittle2);
+            departmet=dataEncryption.Encrypt(departmet);
+            circularno3=dataEncryption.Encrypt(circularno3);
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }
+
+
 
 
 
@@ -179,6 +190,19 @@ public class FileActivity extends AppCompatActivity {
                     departmet = myspinner.getSelectedItem().toString().trim();
                     circularno3 = circularno2.getText().toString().trim();
                     String filename1=tittle2+departmet+circularno3;
+                    DataEncryption dataEncryption=new DataEncryption();
+                    try {
+                        tittle2=dataEncryption.Encrypt(tittle2);
+                        date3=dataEncryption.Encrypt(date3);
+                        departmet=dataEncryption.Encrypt(departmet);
+                        circularno3=dataEncryption.Encrypt(circularno3);
+                        k=dataEncryption.Encrypt(k);
+                    } catch (InvalidKeyException e) {
+                        e.printStackTrace();
+                    }
+
+
+
 
 
                     Listitem listitem = new Listitem(tittle2, date3, k, departmet, circularno3);
@@ -187,7 +211,15 @@ public class FileActivity extends AppCompatActivity {
                     reference.child(filename1).setValue(listitem);
                     DatabaseReference databaseReference3=FirebaseDatabase.getInstance().getReference("Reports").child(filename1);
                    String key2= databaseReference3.push().getKey();
-                   ChatSend chatSend=new ChatSend("app","app","Hello To reports");
+                   String name="app",mail="app",msage="Type Your Report Here";
+                    try {
+                        name=dataEncryption.Encrypt(name);
+                        mail=dataEncryption.Encrypt(mail);
+                        msage=dataEncryption.Encrypt(msage);
+                    } catch (InvalidKeyException e) {
+                        e.printStackTrace();
+                    }
+                    ChatSend chatSend=new ChatSend(name,mail,msage);
                    databaseReference3.child(key2).setValue(chatSend);
 
                     DatabaseReference reference1=firebaseDatabase.getReference("SEENBY");

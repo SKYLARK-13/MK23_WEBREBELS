@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.security.InvalidKeyException;
+
 public class loginadmin2 extends AppCompatActivity {
     private  EditText secretcode,emailadmin,passwordadmin;
     private Button loginadmin;
@@ -32,6 +34,7 @@ public class loginadmin2 extends AppCompatActivity {
         emailadmin=findViewById(R.id.emailadmin);
         passwordadmin=findViewById(R.id.passwordadmin);
         firebaseAuth=FirebaseAuth.getInstance();
+        final DataEncryption dataEncryption=new DataEncryption();
         loginadmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,10 +42,12 @@ public class loginadmin2 extends AppCompatActivity {
                 String k = secretcode.getText().toString().trim();
                 String usern = emailadmin.getText().toString().trim();
                 String passn = passwordadmin.getText().toString().trim();
+
                 if ( usern.isEmpty()|| passn.isEmpty()) {
                     Toast.makeText(loginadmin2.this, "please fill all the fields", Toast.LENGTH_LONG).show();
                 } else {
                     if (code.equals(k)) {
+
                         firebaseAuth.signInWithEmailAndPassword(usern, passn).addOnCompleteListener(loginadmin2.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
